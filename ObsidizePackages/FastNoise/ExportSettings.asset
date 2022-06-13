@@ -18,3 +18,4 @@ MonoBehaviour:
   _paths:
   - Editor
   - Runtime
+  - package.json
