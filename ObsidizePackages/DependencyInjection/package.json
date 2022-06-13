@@ -1,12 +1,12 @@
 {
-	"name": "com.obsidize.unity.dependency-injection",
+	"name": "com.obsidize.dependency-injection",
 	"version": "1.3.2",
 	"displayName": "Dependency Injection",
 	"description": "Utilities for enhanced unity app control flow via DI tokens",
 	"unity": "2019.4",
-	"documentationUrl": "https://github.com/jospete/obsidize-unity-dependency-injection/blob/master/README.md",
-	"changelogUrl": "https://github.com/jospete/obsidize-unity-dependency-injection/blob/master/CHANGELOG.md",
-	"licensesUrl": "https://github.com/jospete/obsidize-unity-dependency-injection/blob/master/LICENSE.md",
+	"documentationUrl": "https://github.com/jospete/obsidize-unity-tools/blob/main/README.md",
+	"licensesUrl": "https://github.com/jospete/obsidize-unity-tools/blob/main/LICENSE.md",
+	"changelogUrl": "https://github.com/jospete/obsidize-unity-range-input/blob/main/ObsidizePackages/DependencyInjection/CHANGELOG.md",
 	"license": "MIT",
 	"author": {
 		"name": "Obsidize Tools",
@@ -15,7 +15,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jospete/obsidize-unity-dependency-injection.git"
+		"url": "https://github.com/jospete/obsidize-unity-tools.git"
 	},
 	"keywords": [
 		"tools",

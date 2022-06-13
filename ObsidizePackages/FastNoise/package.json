@@ -5,9 +5,9 @@
 	"description": "Procedural noise generation assets based on the Auburn/FastNoiseLite library",
 	"unity": "2019.4",
 	"type": "library",
-	"documentationUrl": "https://github.com/jospete/obsidize-unity-fast-noise/blob/master/README.md",
-	"changelogUrl": "https://github.com/jospete/obsidize-unity-fast-noise/blob/master/CHANGELOG.md",
-	"licensesUrl": "https://github.com/jospete/obsidize-unity-fast-noise/blob/master/LICENSE.md",
+	"documentationUrl": "https://github.com/jospete/obsidize-unity-tools/blob/main/README.md",
+	"licensesUrl": "https://github.com/jospete/obsidize-unity-tools/blob/main/LICENSE.md",
+	"changelogUrl": "https://github.com/jospete/obsidize-unity-range-input/blob/main/ObsidizePackages/FastNoise/CHANGELOG.md",
 	"license": "MIT",
 	"author": {
 		"name": "Obsidize Tools",
@@ -16,10 +16,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jospete/obsidize-unity-fast-noise.git"
-	},
-	"dependencies": {
-		"com.obsidize.range-input": "git+https://github.com/jospete/obsidize-unity-range-input.git#1.0.2"
+		"url": "https://github.com/jospete/obsidize-unity-tools.git"
 	},
 	"keywords": [
 		"noise",

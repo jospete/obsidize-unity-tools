@@ -1,13 +1,12 @@
 {
-	"name": "com.obsidize.range-input",
-	"version": "1.0.2",
-	"displayName": "Min-Max Range Input",
-	"description": "Utilities for min/max range inputs",
+	"name": "com.obsidize.express-export",
+	"version": "1.0.0",
+	"displayName": "Express Export",
+	"description": "Memoization assets for generating *.unitypackage files in a standardized way",
 	"unity": "2019.4",
-	"type": "library",
 	"documentationUrl": "https://github.com/jospete/obsidize-unity-tools/blob/main/README.md",
 	"licensesUrl": "https://github.com/jospete/obsidize-unity-tools/blob/main/LICENSE.md",
-	"changelogUrl": "https://github.com/jospete/obsidize-unity-range-input/blob/main/ObsidizePackages/RangeInput/CHANGELOG.md",
+	"changelogUrl": "https://github.com/jospete/obsidize-unity-range-input/blob/main/ObsidizePackages/ExpressExport/CHANGELOG.md",
 	"license": "MIT",
 	"author": {
 		"name": "Obsidize Tools",
@@ -19,10 +18,9 @@
 		"url": "https://github.com/jospete/obsidize-unity-tools.git"
 	},
 	"keywords": [
-		"range",
-		"input",
 		"tools",
-		"min",
-		"max"
+		"package",
+		"export",
+		"exporter"
 	]
 }
