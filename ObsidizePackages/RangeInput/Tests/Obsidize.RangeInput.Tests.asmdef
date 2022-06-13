@@ -1,0 +1,16 @@
+{
+    "name": "Obsidize.RangeInput.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a1b31fabbb25f3d4e9fbe5e0e13b002a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

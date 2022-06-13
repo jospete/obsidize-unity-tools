@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fe665f106eb914ab839a19d6714f7b, type: 3}
+  m_Name: Suppressor
+  m_EditorClassIdentifier: 
+  _preview:
+    _seed: -54654
+    _format: 0
+    _lowColor: {r: 0, g: 0, b: 0, a: 1}
+    _highColor: {r: 1, g: 1, b: 1, a: 1}
+    _density: 4
+    _zoom: 0.5500001
+    _offset: {x: 1533, y: 52}
+  _inputSource: {fileID: 11400000, guid: e97b5c12013bbf34db5a41693deced6f, type: 2}
+  _trim:
+    _min: 0.20314388
+    _max: 0.79
+  _lowerBound: 0.997
+  _decay: 0.48

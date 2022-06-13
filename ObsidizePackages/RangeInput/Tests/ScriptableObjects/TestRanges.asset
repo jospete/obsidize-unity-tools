@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ab184cc8ae811469b9b3a181ccc55b, type: 3}
+  m_Name: TestRanges
+  m_EditorClassIdentifier: 
+  testFloatRange:
+    _min: 3.18
+    _max: 9.17
+  testIntRange:
+    _min: -55
+    _max: -181
+  testAttrFloatRange:
+    _min: -1
+    _max: 0.24000001
+  testAttrIntRange:
+    _min: -50
+    _max: -14
