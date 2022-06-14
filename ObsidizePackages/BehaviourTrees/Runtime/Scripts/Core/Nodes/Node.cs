@@ -29,6 +29,8 @@ namespace Obsidize.BehaviourTrees
         public bool Started { get; protected set; }
         public BehaviourTreeController Controller { get; protected set; }
         public bool Idle => State == NodeState.Running && !Started;
+        public bool DidSucceed => Started && State == NodeState.Success;
+        public bool DidFail => Started && State == NodeState.Failure;
 
         public string Guid
         {

@@ -17,6 +17,7 @@ namespace Obsidize.BehaviourTrees.Editor
 		private Node _target;
 		private Port _input;
 		private Port _output;
+		private Label _descriptionLabel;
 
         public Node Target => _target;
 		public Port Input => _input;
@@ -26,16 +27,23 @@ namespace Obsidize.BehaviourTrees.Editor
 		{
 
             _target = node;
+			_descriptionLabel = this.Q<Label>("description-label");
 
-			title = ObjectNames.NicifyVariableName(node.DisplayName);
 			viewDataKey = node.Guid;
 			style.left = node.GraphPosition.x;
 			style.top = node.GraphPosition.y;
 			styleSheets.Add(BehaviourTreeEditorUtility.Settings.NodeViewStyleSheet);
 
+			SyncNodeTextContent();
 			CreateInputPorts();
 			CreateOutputPorts();
 			SetupClasses();
+		}
+
+		private void SyncNodeTextContent()
+		{
+			title = ObjectNames.NicifyVariableName(Target.DisplayName);
+			_descriptionLabel.text = Target.Description;
 		}
 
 		private void SetupClasses()
@@ -90,6 +98,7 @@ namespace Obsidize.BehaviourTrees.Editor
 			RemoveActivePathClass(parentEdge);
 			RemoveActivePathClass(Input);
 			RemoveActivePathClass(Output);
+			SyncNodeTextContent();
 
 			foreach (var state in BehaviourTreeEditorUtility.ALL_NODE_STATES)
 			{

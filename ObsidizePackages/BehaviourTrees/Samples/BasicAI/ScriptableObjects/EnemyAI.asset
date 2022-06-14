@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8964028512075093813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b8eb646a99e1c45ab4498f9c000fc1, type: 3}
+  m_Name: HasReachedPatrolDestination
+  m_EditorClassIdentifier: 
+  _description: 
+  _guid: 60047d9a-bbbb-406f-bd7f-5d31447c9fa8
+  _graphPosition: {x: 634.2718, y: 923}
+  _invertInput: 0
 --- !u!114 &-8573952232281188289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,7 +30,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   _guid: b150607d-da7a-4d86-9204-492549a12757
-  _graphPosition: {x: -428.753, y: 736.5457}
+  _graphPosition: {x: -549, y: 750.3539}
+  _invertInput: 1
 --- !u!114 &-8331663126507255859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   _guid: 611df9fb-0bff-48c1-8496-f3dc73cd001f
-  _graphPosition: {x: -47.752956, y: 933.5457}
+  _graphPosition: {x: -162.00002, y: 923.3539}
 --- !u!114 &-5434133155326821285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,12 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c76f716125940f4ba2470e98e55f756, type: 3}
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
-  _description: 
+  _description: Run patrol sequence
   _guid: 9e2cb4ab-2090-4b44-afe7-189d58b8c4cb
-  _graphPosition: {x: 288.24698, y: 546.5457}
+  _graphPosition: {x: 494.9998, y: 546.9999}
   _children:
-  - {fileID: 2574467768899905598}
-  - {fileID: 7851054344587183656}
+  - {fileID: -3667407362397090611}
+  - {fileID: -3193694402590794642}
 --- !u!114 &-4598000908694024263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,11 +95,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   _guid: 93651313-7fe8-4cdd-9ca0-8165455955cc
-  _graphPosition: {x: -162.75299, y: 755.5457}
+  _graphPosition: {x: -277.00003, y: 745.3539}
   _children:
   - {fileID: 6008806165718825506}
   - {fileID: -5873509015732122116}
---- !u!114 &-1942383245984183681
+--- !u!114 &-3667407362397090611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,8 +112,44 @@ MonoBehaviour:
   m_Name: SelectorNode
   m_EditorClassIdentifier: 
   _description: 
+  _guid: 4f42f302-4272-4aac-81b5-b72d1ffc3ea8
+  _graphPosition: {x: 285.68146, y: 745}
+  _children:
+  - {fileID: 7562402907110289301}
+  - {fileID: 7851054344587183656}
+--- !u!114 &-3193694402590794642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1459cf6691c7cf64dafd625f8d2637b5, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  _description: 
+  _guid: 744c4733-760a-4886-8c65-4031115a99d1
+  _graphPosition: {x: 798.99994, y: 744.99994}
+  _children:
+  - {fileID: -8964028512075093813}
+  - {fileID: 2574467768899905598}
+--- !u!114 &-1942383245984183681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1459cf6691c7cf64dafd625f8d2637b5, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  _description: Attack any visible threats
   _guid: 5735ee1b-5159-4642-8948-a70a29818e46
-  _graphPosition: {x: -278.75296, y: 546.5457}
+  _graphPosition: {x: -374, y: 547.00006}
   _children:
   - {fileID: -8573952232281188289}
   - {fileID: -4598000908694024263}
@@ -125,6 +178,10 @@ MonoBehaviour:
   - {fileID: -1942383245984183681}
   - {fileID: -4598000908694024263}
   - {fileID: -8573952232281188289}
+  - {fileID: -8964028512075093813}
+  - {fileID: -3193694402590794642}
+  - {fileID: -3667407362397090611}
+  - {fileID: 7562402907110289301}
 --- !u!114 &1114547872730224931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +198,7 @@ MonoBehaviour:
   _guid: 9de1da83-adf0-4c39-86cb-d27629505842
   _graphPosition: {x: 0, y: 0}
   _child: {fileID: -8331663126507255859}
+  _persistCompositeState: 0
 --- !u!114 &2574467768899905598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   _guid: 792f05b6-1742-4877-857f-beaff4f61c99
-  _graphPosition: {x: 182.24701, y: 760.5457}
+  _graphPosition: {x: 949.2717, y: 923}
 --- !u!114 &6008806165718825506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +228,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   _guid: df749332-091b-4038-ae09-9e591351623b
-  _graphPosition: {x: -285.75293, y: 933.5457}
+  _graphPosition: {x: -399.99997, y: 923.3539}
+--- !u!114 &7562402907110289301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc873f42a3c81ad4287bd0f0a1fad624, type: 3}
+  m_Name: HasPetrolDelay
+  m_EditorClassIdentifier: 
+  _description: 
+  _guid: 16f20959-e326-4540-b44f-fb3eba003930
+  _graphPosition: {x: 195.68146, y: 922.9999}
+  _invertInput: 1
 --- !u!114 &7851054344587183656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   _guid: 65c9a6ea-0369-4d5e-96ad-d367f00b5fe7
-  _graphPosition: {x: 416.24704, y: 760.5457}
+  _graphPosition: {x: 402.68146, y: 922.9999}
 --- !u!114 &8646009786658556724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c76f716125940f4ba2470e98e55f756, type: 3}
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
-  _description: 
+  _description: Main Goals
   _guid: 43bf8c6c-e380-4511-b636-aa4637453f92
   _graphPosition: {x: -0.00004506111, y: 292.00003}
   _children:

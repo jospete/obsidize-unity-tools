@@ -7,7 +7,7 @@ namespace Obsidize.BehaviourTrees.Samples
     {
 
 		[SerializeField] private ActorSensor _visibilitySensor;
-		[SerializeField] private Transform[] _waypoints;
+		[SerializeField] private WaypointRuntimeSet _waypointRuntimeSet;
 		[SerializeField] private LayerMask _threatLayers;
 		[SerializeField] private float _maxPatrolDelay;
 
@@ -20,6 +20,9 @@ namespace Obsidize.BehaviourTrees.Samples
 
 		private Movement _movement;
 
+		private Vector3 CurrentPatrolDestination => _waypointRuntimeSet.GetWaypointPositionAt(_waypointIndex);
+		public bool HasPetrolDelayRemaining => _patrolDelayRemaining > 0f;
+
 		private void Start()
 		{
 			_movement = GetComponent<Movement>();
@@ -27,7 +30,7 @@ namespace Obsidize.BehaviourTrees.Samples
 
 		private void Update()
 		{
-			if (IsWaitingForPatrolDelay())
+			if (HasPetrolDelayRemaining)
 			{
 				_patrolDelayRemaining = Mathf.Max(0f, _patrolDelayRemaining - Time.deltaTime);
 			}
@@ -36,16 +39,26 @@ namespace Obsidize.BehaviourTrees.Samples
 		private void OnEnable()
 		{
 			_visibilitySensor.OnColliderEnter += HandleThreatEnter;
+			_visibilitySensor.OnColliderExit += HandleThreatExit;
 		}
 
 		private void OnDisable()
 		{
 			_visibilitySensor.OnColliderEnter -= HandleThreatEnter;
+			_visibilitySensor.OnColliderExit -= HandleThreatExit;
 		}
 
 		private void HandleThreatEnter(Collider collider)
 		{
 			_threatTransform = collider.transform;
+		}
+
+		private void HandleThreatExit(Collider collider)
+		{
+			if (_threatTransform != null && _threatTransform.gameObject == collider.gameObject)
+			{
+				_threatTransform = null;
+			}
 		}
 
 		public bool TryAttackThreatTarget()
@@ -71,12 +84,12 @@ namespace Obsidize.BehaviourTrees.Samples
 			return hasThreat;
 		}
 
-		public bool IsWaitingForPatrolDelay()
+		public bool TryWaitForPatrolDelay()
 		{
-			return _patrolDelayRemaining > 0f;
+			return !HasPetrolDelayRemaining;
 		}
 
-		public void OnStartPetrolDelay()
+		public void StartPetrolDelay()
 		{
 			_selectedPatrolDelay = Random.value * _maxPatrolDelay;
 			_patrolDelayRemaining = _selectedPatrolDelay;
@@ -87,15 +100,37 @@ namespace Obsidize.BehaviourTrees.Samples
 			return _threatTransform != null;
 		}
 
-		public void OnStartPatrol()
+		public bool IsMovementDestinationSetToPatrol()
 		{
-			_waypointIndex = (_waypointIndex + 1) % _waypoints.Length;
-			_movement.Destination = _waypoints[_waypointIndex].position;
+			return Vector3.Distance(_movement.Destination, CurrentPatrolDestination) <= Mathf.Epsilon;
 		}
 
-		public bool IsMovingToPatrolDestination()
+		public bool HasReachedPatrolDestination()
 		{
-			return !_movement.HasReachedDestination;
+			return IsMovementDestinationSetToPatrol() && _movement.HasReachedDestination;
+		}
+
+		public bool TryMoveToPatrolDestination()
+		{
+			_movement.Destination = CurrentPatrolDestination;
+			return _movement.HasReachedDestination;
+		}
+
+		public void AdvancePatrolDestination()
+		{
+			
+			var count = _waypointRuntimeSet.Waypoints.Count;
+
+			if (count > 0)
+			{
+				_waypointIndex = (_waypointIndex + 1) % count;
+			}
+		}
+
+		public void OnPatrolActionComplete()
+		{
+			StartPetrolDelay();
+			AdvancePatrolDestination();
 		}
 	}
 }
