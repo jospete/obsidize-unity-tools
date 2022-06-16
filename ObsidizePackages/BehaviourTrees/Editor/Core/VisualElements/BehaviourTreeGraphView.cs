@@ -12,6 +12,7 @@ namespace Obsidize.BehaviourTrees.Editor
     public class BehaviourTreeGraphView : GraphView
     {
 
+        private static readonly Vector2 duplicationOffset = Vector2.one * 20f;
         private static readonly bool verbose = false;
 
         public new class UxmlFactory : UxmlFactory<BehaviourTreeGraphView, UxmlTraits> { }
@@ -28,13 +29,50 @@ namespace Obsidize.BehaviourTrees.Editor
 
             styleSheets.Add(BehaviourTreeEditorUtility.Settings.RootStyleSheet);
             Undo.undoRedoPerformed += OnUndoRedoPerformed;
-		}
 
-		private void OnUndoRedoPerformed()
+            serializeGraphElements += CutOrCopyOperation;
+            unserializeAndPaste += PasteOperation;
+            canPasteSerializedData += CanPaste;
+        }
+
+        private void RepopulateView()
 		{
             PopulateView(tree);
+        }
+
+        private void OnUndoRedoPerformed()
+        {
+            RepopulateView();
             AssetDatabase.SaveAssets();
-		}
+        }
+
+        private bool CanPaste(string data)
+        {
+            return true;
+        }
+
+        private string CutOrCopyOperation(IEnumerable<GraphElement> elements)
+        {
+            return elements
+                .Select(e => e as BehaviourTreeNodeView)
+                .Where(n => n != null)
+                .Select(e => e.Target)
+                .ToSerializedNodeList();
+        }
+
+        private void PasteOperation(string operationName, string data)
+		{
+
+            var nodes = NodeSerializationUtility.DeserializeAllNodes(data);
+
+            foreach (var node in nodes)
+			{
+                node.GraphPosition += duplicationOffset;
+                tree.CreateNodeAssetFromInstance(node);
+            }
+
+            RepopulateView();
+        }
 
         private void AddGraphManipulators()
 		{
@@ -184,7 +222,13 @@ namespace Obsidize.BehaviourTrees.Editor
         private bool ShouldPreventGraphElementDeletion(VisualElement element)
 		{
             var nodeView = element as BehaviourTreeNodeView;
-            return nodeView != null && nodeView.Target is RootNode;
+
+            if (nodeView != null)
+			{
+                return nodeView.Target is RootNode;
+            }
+
+            return false;
         }
 
         private void HandleDeletedGraphElement(GraphElement element)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,7 +39,7 @@ namespace Obsidize.BehaviourTrees
             set => _guid = value;
         }
 
-        public Vector2 GraphPosition
+		public Vector2 GraphPosition
         {
             get => _graphPosition;
             set => _graphPosition = value;
@@ -67,12 +68,16 @@ namespace Obsidize.BehaviourTrees
         public virtual List<Node> GetChildren()
 		{
             return null;
-		}
+        }
+
+        public virtual void DetachAllChildren()
+        {
+        }
 
         public virtual Node Clone()
 		{
             return Instantiate(this);
-		}
+        }
 
         public NodeState Update()
 		{
@@ -114,5 +119,5 @@ namespace Obsidize.BehaviourTrees
                 }
             }
         }
-    }
+	}
 }

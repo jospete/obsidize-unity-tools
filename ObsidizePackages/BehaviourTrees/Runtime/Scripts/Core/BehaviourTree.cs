@@ -40,15 +40,25 @@ namespace Obsidize.BehaviourTrees
 
         public Node CreateNode(System.Type type)
 		{
-            var node = CreateNodeInstance(type);
-            Children.Add(node);
-            return node;
+            var node = CreateInstance(type) as Node;
+            return NormalizeAndAdd(node);
         }
 
         public Node CreateNodeWithRootCheck(System.Type type)
 		{
             return type == typeof(RootNode) ? CreateRootNode() : CreateNode(type);
-		}
+        }
+
+        public Node AddExistingNodeWithRootCheck(Node node)
+        {
+
+            if (node is not RootNode)
+			{
+                NormalizeAndAddDistinct(node);
+            }
+
+            return node;
+        }
 
         public RootNode CreateRootNode()
 		{
@@ -84,6 +94,32 @@ namespace Obsidize.BehaviourTrees
             return _treeState;
         }
 
+        private bool NormalizeAndAddDistinct(Node node)
+		{
+
+            if (Children.Contains(node))
+			{
+                return false;
+			}
+
+            NormalizeAndAdd(node);
+            return true;
+		}
+
+        private Node NormalizeAndAdd(Node node)
+        {
+
+            node.name = node.GetType().Name;
+            node.Guid = System.Guid.NewGuid().ToString();
+
+            // if we're adding a new node,
+            // it should not come with any implicit connections
+            node.DetachAllChildren();
+            Children.Add(node);
+
+            return node;
+        }
+
         private RootNode FindExistingRootNode()
 		{
 
@@ -97,14 +133,6 @@ namespace Obsidize.BehaviourTrees
 
             return null;
 		}
-
-        private Node CreateNodeInstance(System.Type type)
-		{
-            var node = CreateInstance(type) as Node;
-            node.name = type.Name;
-            node.Guid = System.Guid.NewGuid().ToString();
-            return node;
-        }
 
         private void SyncNodeListToRoot()
         {

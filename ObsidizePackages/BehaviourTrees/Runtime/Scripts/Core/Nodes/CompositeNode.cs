@@ -48,6 +48,11 @@ namespace Obsidize.BehaviourTrees
 			return Children;
 		}
 
+		public override void DetachAllChildren()
+		{
+			Children.Clear();
+		}
+
 		protected virtual void OnValidate()
 		{
 			_children.RemoveAll(x => x == null);

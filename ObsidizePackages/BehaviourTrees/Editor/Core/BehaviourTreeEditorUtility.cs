@@ -31,24 +31,34 @@ namespace Obsidize.BehaviourTrees.Editor
 			{
                 CreateNodeAsset(tree, typeof(RootNode));
             }
-		}
+        }
 
         public static Node CreateNodeAsset(this BehaviourTree tree, System.Type type)
-		{
+        {
+            return AttachNodeAsset(tree, () => tree.CreateNodeWithRootCheck(type));
+        }
+
+        public static Node CreateNodeAssetFromInstance(this BehaviourTree tree, Node node)
+        {
+            return AttachNodeAsset(tree, () => tree.AddExistingNodeWithRootCheck(node));
+        }
+
+        private static Node AttachNodeAsset(this BehaviourTree tree, Func<Node> getNode)
+        {
 
             var undoLabel = "Behaviour Tree (Create Node)";
             Undo.RecordObject(tree, undoLabel);
 
-            var node = tree.CreateNodeWithRootCheck(type);
+            var node = getNode();
             Undo.RegisterCreatedObjectUndo(node, undoLabel);
 
             if (!Application.isPlaying)
-			{
+            {
                 AssetDatabase.AddObjectToAsset(node, tree);
             }
 
             return node;
-		}
+        }
 
         public static void DeleteNodeAsset(this BehaviourTree tree, Node node)
 		{

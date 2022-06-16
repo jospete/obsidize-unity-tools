@@ -1,6 +1,6 @@
 {
 	"name": "com.obsidize.behaviour-trees",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"displayName": "Behaviour Trees",
 	"description": "Visual Editor for AI Behaviour Trees",
 	"unity": "2021.3",

@@ -30,6 +30,11 @@ namespace Obsidize.BehaviourTrees
 			return new List<Node> { Child };
 		}
 
+		public override void DetachAllChildren()
+		{
+			Child = null;
+		}
+
 		public override bool AttachChild(Node child)
 		{
 			Child = child;
