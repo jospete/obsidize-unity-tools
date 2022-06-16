@@ -14,7 +14,7 @@ namespace Obsidize.BehaviourTrees.Editor
         private InspectorView inspectorView;
         private BehaviourTree runtimeSelectionPrefab;
 
-        [MenuItem("Behaviour Trees/Editor")]
+        [MenuItem("Window/Behaviour Trees/Editor")]
         public static void OpenWindow()
         {
             BehaviourTreeEditor window = GetWindow<BehaviourTreeEditor>();
