@@ -5,7 +5,7 @@ namespace Obsidize.BehaviourTrees.Samples
 
 		protected override NodeState OnUpdate()
 		{
-			return ControllerState.TryWaitForPatrolDelay()
+			return Blackboard.TryWaitForPatrolDelay()
 				? NodeState.Success
 				: NodeState.Running;
 		}

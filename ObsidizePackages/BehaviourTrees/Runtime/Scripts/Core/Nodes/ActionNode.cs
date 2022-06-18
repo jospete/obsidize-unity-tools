@@ -2,15 +2,14 @@ using UnityEngine;
 
 namespace Obsidize.BehaviourTrees
 {
-
 	public abstract class ActionNode<T> : ActionNode, INode<T> where T : Component
 	{
-		public T ControllerState { get; private set; }
+		public T Blackboard { get; private set; }
 
 		public override void OnTreeAwake(BehaviourTreeController tree)
 		{
 			base.OnTreeAwake(tree);
-			ControllerState = tree.GetComponent<T>();
+			Blackboard = tree.GetComponent<T>();
 		}
 	}
 

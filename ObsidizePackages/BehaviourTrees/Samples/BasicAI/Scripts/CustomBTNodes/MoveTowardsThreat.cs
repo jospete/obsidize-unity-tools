@@ -5,12 +5,12 @@ namespace Obsidize.BehaviourTrees.Samples
 		protected override NodeState OnUpdate()
 		{
 
-			if (ControllerState.IsWithinReachOfThreat())
+			if (Blackboard.IsWithinReachOfThreat())
 			{
 				return NodeState.Success;
 			}
 
-			if (ControllerState.TryMoveTowardsThreat())
+			if (Blackboard.TryMoveTowardsThreat())
 			{
 				return NodeState.Running;
 			}

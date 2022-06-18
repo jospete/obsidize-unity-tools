@@ -149,12 +149,12 @@ namespace Obsidize.BehaviourTrees.Editor
 		{
 
             var types = TypeCache.GetTypesDerivedFrom<T>().Where(type => !type.IsGenericType && !type.IsAbstract);
-            var categoryName = typeof(T).Name;
+            var categoryName = typeof(T).Name.WithoutNodeSuffix();
             var actionNamePrefix = categoryName + "s/";
 
             foreach (var type in types)
             {
-                var actionName = actionNamePrefix + type.Name;
+                var actionName = actionNamePrefix + ObjectNames.NicifyVariableName(type.Name.WithoutNodeSuffix());
                 evt.menu.AppendAction(actionName, action => CreateNodeAsset(action, type, targetPosition));
             }
         }

@@ -2,19 +2,18 @@ using UnityEngine;
 
 namespace Obsidize.BehaviourTrees
 {
-
 	public abstract class ConditionNode<T> : ConditionNode, INode<T> where T : Component
 	{
-		public T ControllerState { get; private set; }
+		public T Blackboard { get; private set; }
 
 		public override void OnTreeAwake(BehaviourTreeController tree)
 		{
 			base.OnTreeAwake(tree);
-			ControllerState = tree.GetComponent<T>();
+			Blackboard = tree.GetComponent<T>();
 		}
 	}
 
-	public abstract class ConditionNode : ActionNode
+	public abstract class ConditionNode : Node
     {
 
 		[SerializeField] private bool _invertInput;
@@ -23,6 +22,7 @@ namespace Obsidize.BehaviourTrees
 		protected string DisplayNamePrefix => InvertInput ? "(!) " : string.Empty;
 		public override string DisplayName => DisplayNamePrefix + base.DisplayName;
 		public override string PrimaryUssClass => "bt-condition";
+		public sealed override NodeChildCapacity ChildCapacity => NodeChildCapacity.None;
 		public abstract bool IsTrue();
 
 		protected bool HasExpectedInput()

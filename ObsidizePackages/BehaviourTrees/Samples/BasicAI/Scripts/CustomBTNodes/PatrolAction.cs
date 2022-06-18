@@ -5,7 +5,7 @@ namespace Obsidize.BehaviourTrees.Samples
 
 		protected override NodeState OnUpdate()
 		{
-			return ControllerState.TryMoveToPatrolDestination()
+			return Blackboard.TryMoveToPatrolDestination()
 				? NodeState.Success
 				: NodeState.Running;
 		}

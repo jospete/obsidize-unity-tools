@@ -5,12 +5,12 @@ namespace Obsidize.BehaviourTrees.Samples
 
 		public override bool IsTrue()
 		{
-			return ControllerState.HasReachedPatrolDestination();
+			return Blackboard.HasReachedPatrolDestination();
 		}
 
 		protected override void OnStop()
 		{
-			if (DidSucceed) ControllerState.OnPatrolActionComplete();
+			if (DidSucceed) Blackboard.OnPatrolActionComplete();
 		}
 	}
 }

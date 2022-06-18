@@ -4,7 +4,7 @@ namespace Obsidize.BehaviourTrees.Samples
     {
 		protected override NodeState OnUpdate()
 		{
-			return ControllerState.TryAttackThreatTarget()
+			return Blackboard.TryAttackThreatTarget()
 				? NodeState.Success
 				: NodeState.Failure;
 		}

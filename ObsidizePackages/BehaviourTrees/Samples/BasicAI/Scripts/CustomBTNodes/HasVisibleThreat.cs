@@ -5,7 +5,7 @@ namespace Obsidize.BehaviourTrees.Samples
 	{
 		public override bool IsTrue()
 		{
-			return ControllerState.HasVisibleThreat();
+			return Blackboard.HasVisibleThreat();
 		}
 	}
 }

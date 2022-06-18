@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Obsidize.BehaviourTrees
 {
-
     public abstract class Node : ScriptableObject
     {
 
@@ -21,7 +19,7 @@ namespace Obsidize.BehaviourTrees
         [HideInInspector]
         private Vector2 _graphPosition;
 
-        public virtual string DisplayName => GetType().Name;
+        public virtual string DisplayName => GetType().Name.WithoutNodeSuffix();
         public string Description => _description;
         public virtual string PrimaryUssClass => "bt-node";
         public abstract NodeChildCapacity ChildCapacity { get; }

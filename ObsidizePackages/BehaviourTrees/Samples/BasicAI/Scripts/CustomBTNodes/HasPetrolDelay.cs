@@ -4,7 +4,7 @@ namespace Obsidize.BehaviourTrees.Samples
 	{
 		public override bool IsTrue()
 		{
-			return ControllerState.HasPetrolDelayRemaining;
+			return Blackboard.HasPetrolDelayRemaining;
 		}
 	}
 }
