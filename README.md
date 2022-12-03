@@ -1,4 +1,6 @@
-# Obsidize Tools
+# [DEPRECATED] Obsidize Tools
+
+**DEPRECATION NOTICE** - use [obsidize-unity-toolkit](https://github.com/jospete/obsidize-unity-toolkit) instead
 
 General tools to streamline common processes in Obsidize Games.
 
